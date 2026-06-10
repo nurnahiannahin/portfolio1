@@ -1,18 +1,18 @@
+"use client"; // Required for components using React hooks or icons in Next.js
+
 import { FiGithub, FiExternalLink } from 'react-icons/fi';
-import { SiReact, SiNodedotjs, SiMongodb, SiExpress, SiNextdotjs, SiSupabase, SiTypescript } from 'react-icons/si';
+import { 
+  SiReact, 
+  SiNodedotjs, 
+  SiExpress, 
+  SiMongodb, 
+  SiNextdotjs, 
+  SiSupabase, 
+  SiTypescript 
+} from 'react-icons/si';
 import Image from 'next/image';
 
-// Map your tech stack strings to actual icons
-const techIcons: { [key: string]: JSX.Element } = {
-  "React": <SiReact className="text-[#61DAFB]" />,
-  "Node.js": <SiNodedotjs className="text-[#339933]" />,
-  "Express": <SiExpress className="text-gray-700 dark:text-gray-300" />,
-  "MongoDB": <SiMongodb className="text-[#47A248]" />,
-  "Next.js": <SiNextdotjs className="text-black dark:text-white" />,
-  "Supabase": <SiSupabase className="text-[#3ECF8E]" />,
-  "TypeScript": <SiTypescript className="text-[#3178C6]" />,
-};
-
+// 1. Defined a proper type for your projects
 interface Project {
   title: string;
   description: string;
@@ -32,10 +32,27 @@ const projects: Project[] = [
   },
 ];
 
+// 2. Functional helper to avoid serialization errors during build
+const getTechIcon = (tag: string) => {
+  const className = "text-xl";
+  switch (tag) {
+    case "React": return <SiReact className={`${className} text-[#61DAFB]`} />;
+    case "Node.js": return <SiNodedotjs className={`${className} text-[#339933]`} />;
+    case "Express": return <SiExpress className={`${className} text-gray-700 dark:text-gray-300`} />;
+    case "MongoDB": return <SiMongodb className={`${className} text-[#47A248]`} />;
+    case "Next.js": return <SiNextdotjs className={`${className} text-black dark:text-white`} />;
+    case "Supabase": return <SiSupabase className={`${className} text-[#3ECF8E]`} />;
+    case "TypeScript": return <SiTypescript className={`${className} text-[#3178C6]`} />;
+    default: return null;
+  }
+};
+
 export default function Projects() {
   return (
     <section className="w-full max-w-[1200px] mx-auto px-6 py-20">
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-12 tracking-tight">Featured Projects</h2>
+      <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-12 tracking-tight">
+        Featured Projects
+      </h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
@@ -49,6 +66,7 @@ export default function Projects() {
                 src={project.image} 
                 alt={project.title} 
                 fill 
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
@@ -63,11 +81,11 @@ export default function Projects() {
                 {project.description}
               </p>
 
-              {/* Tech Stack Icons */}
+              {/* Tech Stack */}
               <div className="flex items-center gap-3 mb-6">
                 {project.tags.map((tag) => (
-                  <div key={tag} className="text-lg" title={tag}>
-                    {techIcons[tag] || null}
+                  <div key={tag} title={tag}>
+                    {getTechIcon(tag)}
                   </div>
                 ))}
               </div>
@@ -77,11 +95,6 @@ export default function Projects() {
                 <a href={project.githubLink} className="text-sm font-medium flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
                   <FiGithub size={18} /> Code
                 </a>
-                {project.liveLink && (
-                  <a href={project.liveLink} className="text-sm font-medium flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
-                    <FiExternalLink size={18} /> Live
-                  </a>
-                )}
               </div>
             </div>
           </div>
