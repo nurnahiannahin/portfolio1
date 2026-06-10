@@ -4,7 +4,7 @@ import { ModeToggle } from './mode-toggle'
 const Header = () => {
   return (
     // 1. The Main Global Wrapper
-    <div className="w-full px-4 py-4 md:px-8">
+    <div className="sticky top-0 z-50 w-full px-4 py-4 md:px-8">
       
       {/* 2. The Floating Navbar Card */}
       <header className="w-full max-w-7xl mx-auto flex items-center justify-between px-6 py-3 bg-white/80 backdrop-blur-md border border-gray-100 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]">

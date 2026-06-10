@@ -10,18 +10,18 @@ export default function HeroContent() {
       
       {/* Eyebrow Label */}
       <p className="text-[14px] sm:text-[15px] font-medium text-gray-400 tracking-tight mb-8">
-        Nur Nahian Nahin <span className="text-gray-300 mx-2">•</span> based in Dhaka
+        Nur Nahian Nahin <span className="text-gray-300 mx-2">•</span> based in Dhaka, Bangladesh
       </p>
 
       {/* Headline Text Block */}
       {/* FIX: Changed text color to text-[#111111] for crystal clear light-mode contrast, 
         and added dark:text-[#ffffff] to ensure it turns pure white in dark-mode!
       */}
-      <h1 className="text-[36px] sm:text-[48px] md:text-[64px] font-normal tracking-tight text-[#111111] dark:text-[#ffffff] leading-[1.12] max-w-[820px]">
+      <h1 className="text-[26px] sm:text-[32px] md:text-[54px] font-normal tracking-tight text-[#111111] dark:text-[#ffffff] leading-[1.12] max-w-[700px]">
         I build full-stack web apps for businesses, using{" "}
         
         {/* Primary Interactive Text Link */}
-        <div className="text-[#1d2bf1] dark:text-[#4d59ff] hover:text-[#12185c] dark:hover:text-[#808aff] inline-block transition-colors duration-200">
+        <div className="text-[36px] sm:text-[48px] md:text-[64px] font-normal tracking-tight text-[#1d2bf1] dark:text-[#4d59ff] hover:text-[#12185c] dark:hover:text-[#808aff] inline-block transition-colors duration-200">
           Next.js and Supabase.
         </div>
       </h1>
