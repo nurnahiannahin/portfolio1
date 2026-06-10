@@ -1,65 +1,72 @@
-import Link from 'next/link'
-import { ModeToggle } from './mode-toggle'
+"use client"; // REQUIRED: This enables useState to work
 
-const Header = () => {
+import { useState } from 'react';
+import Link from 'next/link';
+import { ModeToggle } from './mode-toggle';
+import { FiMenu, FiX } from 'react-icons/fi';
+
+export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    // 1. The Main Global Wrapper
-    <div className="sticky top-0 z-50 w-full px-4 py-4 md:px-8">
-      
-      {/* 2. The Floating Navbar Card */}
-      <header className="w-full max-w-7xl mx-auto flex items-center justify-between px-6 py-3 bg-white/80 backdrop-blur-md border border-gray-100 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+    <div className="sticky top-0 z-[100] w-full px-4 py-4 md:px-8">
+      {/* Navbar Container */}
+      <header className="w-full max-w-7xl mx-auto flex items-center justify-between px-6 py-3 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border border-gray-100 dark:border-gray-800 rounded-3xl shadow-sm">
         
-        {/* 3. Logo Component */}
-        <Link href="/" className="flex items-center gap-2">
-          {/* Box wrapping the 4 squares */}
-          <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center border border-gray-200/50">
-            {/* The 4-square Grid */}
-            <div className="grid grid-cols-2 gap-0.5 w-4 h-4">
-              <div className="bg-black rounded-sm"></div>
-              <div className="bg-black rounded-tr-md rounded-sm"></div>
-              <div className="bg-black rounded-bl-md rounded-sm"></div>
-              <div className="bg-black rounded-sm"></div>
-            </div>
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2 z-[60]">
+          <div className="w-8 h-8 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center border border-gray-200 dark:border-gray-700">
+             <div className="grid grid-cols-2 gap-0.5 w-4 h-4">
+               <div className="bg-black dark:bg-white rounded-sm"></div>
+               <div className="bg-black dark:bg-white rounded-sm"></div>
+               <div className="bg-black dark:bg-white rounded-sm"></div>
+               <div className="bg-black dark:bg-white rounded-sm"></div>
+             </div>
           </div>
-          {/* Logo Text */}
-          <span className="text-xl font-bold text-gray-900 tracking-tight">
-            Nahin.
-          </span>
+          <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">Nahin.</span>
         </Link>
 
-        {/* 4. Navigation Menu & Button Container */}
-        <nav className="flex items-center gap-6">
-          {/* List of Links */}
-          <ul className="flex items-center gap-6 text-sm font-medium text-gray-500">
-            <li>
-              <Link href="/projects" className="hover:text-gray-900 transition-colors duration-200">
-                Projects
-              </Link>
-            </li>
-            <li>
-              <Link href="/about" className="hover:text-gray-900 transition-colors duration-200">
-                About
-              </Link>
-            </li>
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-6">
+          <ul className="flex items-center gap-6 text-sm font-medium text-gray-500 dark:text-gray-400">
+            <li><Link href="/projects" className="hover:text-gray-900 dark:hover:text-white transition-colors">Projects</Link></li>
+            <li><Link href="/about" className="hover:text-gray-900 dark:hover:text-white transition-colors">About</Link></li>
           </ul>
-
-          {/* 5. Call to Action Button */}
-          <Link 
-            href="/contact" 
-            className="bg-[#1d2bf1] text-white px-5 py-2.5 rounded-xl text-sm font-medium shadow-sm hover:bg-[#1520cc] transition-all duration-200 active:scale-95"
-          >
-            Contact me
-          </Link>
-
-          {/* THE THEME TOGGLE ELEMENT */}
+          <Link href="/contact" className="bg-[#1d2bf1] text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-[#1520cc] transition-all">Contact</Link>
           <ModeToggle />
-
         </nav>
 
+        {/* Mobile Hamburger Button */}
+        <button 
+            className="md:hidden p-2 z-[60] text-gray-900 dark:text-white" 
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle Menu"
+        >
+          {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+        </button>
       </header>
 
+      {/* Mobile Menu Overlay */}
+      {isOpen && (
+        <div className="md:hidden absolute top-20 left-4 right-4 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-3xl p-6 shadow-2xl flex flex-col gap-6 z-[50]">
+          <Link href="/projects" className="text-lg font-medium text-gray-900 dark:text-white" onClick={() => setIsOpen(false)}>Projects</Link>
+          <Link href="/about" className="text-lg font-medium text-gray-900 dark:text-white" onClick={() => setIsOpen(false)}>About</Link>
+          
+          {/* Action Row: Contact (3/4) and ModeToggle (1/4) */}
+          <div className="grid grid-cols-4 gap-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+            <Link 
+              href="/contact" 
+              className="col-span-3 bg-[#1d2bf1] text-white py-3 rounded-xl font-medium text-center flex items-center justify-center" 
+              onClick={() => setIsOpen(false)}
+            >
+              Contact me
+            </Link>
+            <div className="col-span-1 flex items-center justify-center">
+              <ModeToggle />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
-  )
+  );
 }
-
-export default Header

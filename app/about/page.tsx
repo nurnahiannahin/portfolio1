@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import { FiMail } from 'react-icons/fi';
 
 export default function AboutPage() {
   return (
@@ -10,7 +11,6 @@ export default function AboutPage() {
       <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
         {/* Left Side: Photo */}
         <div className="w-full aspect-[4/5] relative rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800">
-          {/* Replace src with your actual image path in the public folder */}
           <Image 
             src="/nahian-profile.jpg" 
             alt="Nahian" 
@@ -19,8 +19,8 @@ export default function AboutPage() {
           />
         </div>
 
-        {/* Right Side: First two paragraphs */}
-        <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+        {/* Right Side: First two paragraphs - Justified for all screens */}
+        <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
           <p>
             I'm Nur Nahian Nahin, a full-stack web developer based in Dhaka, Bangladesh, 
             with a B.Sc in Computer Science and Engineering from Daffodil International University, Dhaka.
@@ -34,8 +34,8 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Full Width Content */}
-      <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed mb-16">
+      {/* Full Width Content - Justified for all screens */}
+      <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed mb-16 text-justify">
         <p>
           Since then I've gone from static pages to full-stack applications — learning React, 
           Node.js, MongoDB, Python, SQL, and now Next.js with TypeScript and Supabase. 
@@ -65,26 +65,29 @@ export default function AboutPage() {
       {/* Contact Section */}
       <section className="bg-gray-50 dark:bg-gray-900 p-8 rounded-2xl border border-gray-100 dark:border-gray-800">
         <h2 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">Let's Work Together</h2>
-        <p className="mb-6 text-gray-600 dark:text-gray-400">
+        <p className="mb-6 text-gray-600 dark:text-gray-400 text-justify">
           If you need a web application built — a business website, a booking system, 
           an e-commerce store, or something more complex — I'd like to work with you.
         </p>
+
         <div className="flex flex-wrap gap-4">
-          <a 
+            {/* Email Button */}
+            <a 
             href="mailto:nahiann90@gmail.com" 
-            className="font-medium text-blue-600 dark:text-blue-400 hover:underline"
-          >
-            Email Me
-          </a>
-          <span className="text-gray-300">|</span>
-          <a 
-            href="https://github.com/nurnahiannahin" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="font-medium text-blue-600 dark:text-blue-400 hover:underline"
-          >
-            GitHub Profile
-          </a>
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1d2bf1] text-white font-medium text-sm transition-all duration-300 hover:bg-[#1520cc] hover:shadow-lg hover:shadow-blue-500/20"
+            >
+            <FiMail size={16} /> {/* The Icon */}
+            Email me
+            </a>
+            {/* GitHub Button */}
+            <a 
+                href="https://github.com/nurnahiannahin" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white font-medium text-sm transition-all duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+            >
+                GitHub Profile
+            </a>
         </div>
       </section>
     </main>
