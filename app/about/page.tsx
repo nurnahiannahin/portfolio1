@@ -9,14 +9,28 @@ export default function AboutPage() {
 
       {/* Two Column Section */}
       <div className="grid md:grid-cols-2 gap-12 items-start mb-16">
-        {/* Left Side: Photo */}
-        <div className="w-full aspect-[4/5] relative rounded-2xl overflow-hidden bg-gray-200 dark:bg-gray-800">
+        {/* Left Side: Bright, Formal, and Clean Professional Presentation */}
+        <div className="w-full aspect-[4/5] relative rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-gray-100 bg-white group">
+          
+          {/* The Image - High clarity, no dark overlays */}
           <Image 
-            src="/nahian-profile.jpg" 
-            alt="Nahian" 
+            src="/project-images/Nahian.jpeg" 
+            alt="Nur Nahian Nahin - Full Stack Developer" 
             fill
-            className="object-cover"
+            priority={true}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
+
+          {/* Clean, minimalist white card overlay at the bottom */}
+          <div className="absolute bottom-0 left-0 right-0 z-20 bg-white/90 backdrop-blur-sm p-6 border-t border-gray-100">
+            <p className="text-sm font-bold text-gray-900 tracking-wide uppercase">
+              Nur Nahian Nahin
+            </p>
+            <p className="text-xs text-gray-600 font-medium">
+              B.Sc Computer Science & Engineering | Full-Stack Architect
+            </p>
+          </div>
         </div>
 
         {/* Right Side: First two paragraphs - Justified for all screens */}

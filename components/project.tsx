@@ -28,7 +28,7 @@ const projects: Project[] = [
     description: "A centralized platform to manage patient records, doctor schedules, and appointment bookings with real-time updates.",
     tags: ["React", "Node.js", "Express", "MongoDB"],
     githubLink: "#",
-    image: "/project-images/doctor-system.png",
+    image: "/project-images/doctorM.jpg",
   },
 ];
 
