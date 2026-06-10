@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Nahian's Portfolio",
-  description: "Welcome to my portfolio! I'm Nahian, a passionate developer with a love for creating innovative solutions. Explore my projects, skills, and experience to see how I can contribute to your next venture.",
+  description: "Full-stack web developer based in Dhaka, Bangladesh. Building web applications with Next.js and Supabase",
 };
 
 export default function RootLayout({

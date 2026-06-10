@@ -71,7 +71,7 @@ export default function AboutPage() {
         </p>
         <div className="flex flex-wrap gap-4">
           <a 
-            href="mailto:your-email@example.com" 
+            href="mailto:nahiann90@gmail.com" 
             className="font-medium text-blue-600 dark:text-blue-400 hover:underline"
           >
             Email Me
