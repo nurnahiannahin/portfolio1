@@ -1,4 +1,8 @@
+
+import { supabase } from '@/lib/utils/supabase';
 import Link from 'next/link';
+
+console.log("supabase initialized", supabase); // Just to ensure supabase is imported and can be used in this component if needed
 
 export default function HeroContent() {
   return (
