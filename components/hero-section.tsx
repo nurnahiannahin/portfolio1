@@ -1,15 +1,26 @@
-
 import { supabase } from '@/lib/utils/supabase';
 import Link from 'next/link';
 
-console.log("supabase initialized", supabase); // Just to ensure supabase is imported and can be used in this component if needed
+console.log("supabase initialized", supabase);
 
 export default function HeroContent() {
   return (
-    <div className="relative w-full max-w-[1200px] mx-auto px-6 py-16 md:min-h-[calc(80vh-80px)] flex flex-col justify-center items-start">
+    <div className="relative w-full max-w-[1200px] mx-auto px-6 py-16 md:min-h-[calc(80vh-80px)] flex flex-col justify-center items-start overflow-hidden">
       
-      {/* Background Glow */}
-      <div className="absolute top-0 right-0 w-[200px] md:w-[300px] h-[200px] md:h-[300px] bg-blue-100 dark:bg-blue-900/10 rounded-full blur-[80px] -z-10 opacity-70" />
+      {/* Background Layers */}
+      <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
+        {/* Grain Overlay */}
+        <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+        
+        {/* Primary Glow */}
+        <div className="absolute -top-[10%] -right-[10%] w-[40vw] h-[40vw] bg-blue-200 dark:bg-blue-900/20 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen animate-pulse duration-[10s]" />
+        
+        {/* Secondary Glow */}
+        <div className="absolute top-[20%] -left-[10%] w-[30vw] h-[30vw] bg-indigo-100 dark:bg-indigo-900/10 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen" />
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+      </div>
 
       {/* Top Labels Container */}
       <div className="flex flex-col gap-2 mb-5">
@@ -27,7 +38,7 @@ export default function HeroContent() {
         </p>
       </div>
 
-      {/* Headline - Using decoration for the underline instead of absolute positioning */}
+      {/* Headline */}
       <h1 className="text-[32px] sm:text-[48px] md:text-[60px] font-extrabold tracking-tighter text-[#111111] dark:text-[#ffffff] leading-[1.1] max-w-[800px]">
         I build full-stack web apps for businesses, using{" "}
         <span className="relative inline-block italic text-[#1d2bf1] dark:text-[#4d59ff] whitespace-nowrap">
