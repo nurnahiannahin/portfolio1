@@ -1,6 +1,5 @@
-import Projects from "@/components/project"
-
-
+import React from 'react'
+import Projects from './project'
 
 const HeroProjects = () => {
   return (
@@ -10,11 +9,11 @@ const HeroProjects = () => {
       {/* Header Container for better alignment */}
       <div className="flex flex-col mb-12">
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
-          All Projects
+          Featured Projects
         </h2>
         <div className="mt-4 h-1 w-16 bg-blue-600 rounded-full" />
         <p className="mt-4 text-gray-500 dark:text-gray-400 max-w-lg">
-          A comprehensive list of projects I've built, showcasing my skills and experience.
+          A selection of projects I've built, ranging from SaaS platforms to custom web applications.
         </p>
       </div>
 
