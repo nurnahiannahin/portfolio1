@@ -23,6 +23,14 @@ const projects: Project[] = [
     image: "/project-images/foodies.png",
   },
   {
+    title: "MediClick",
+    description: "An intuitive, clinical management system designed to streamline patient appointment scheduling. It enables seamless doctor discovery and booking while providing administrators with a centralized dashboard to manage operations efficiently.",
+    tags: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS"],
+    githubLink: "https://github.com/nurnahiannahin/Mediclick---Clinic-appoinment", // Update this with your actual repository link
+    liveLink: "https://mediclick-clinic-appoinment.vercel.app/", // Add your Vercel deployment URL here once live
+    image: "/project-images/mediclick.png",
+},
+  {
     title: "Fynnect - Doctor Management System",
     description: "A centralized platform to manage patient records, doctor schedules, and appointment bookings with real-time updates.",
     tags: ["React", "Node.js", "Express", "MongoDB"],
